@@ -33,8 +33,4 @@ def wfq():
         else:
             break
 
-print(priority)
-print(standard)
-print(economy)
-
 wfq()
