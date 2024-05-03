@@ -12,7 +12,7 @@ musicArtists = [
 cursor.executemany("insert into music_artists values (?,?,?)", musicArtists)
 connection.commit()
 
-#Print music_artists
+#Print music_artists table
 for row in cursor.execute("select * from music_artists"):
     print(row)
 
