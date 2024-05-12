@@ -21,4 +21,22 @@ cursor.execute("select * from music_artists where genre=:g", {"g": "Rock"})
 rockSearch = cursor.fetchall()
 print(rockSearch)
 
+genre_data = [
+    ("Rock", "Los Angeles"),
+    ("Hippie", "Eugene"),
+    ("Opera", "Florence")
+]
+cursor.execute("create table genres (genre text, city text)")
+cursor.executemany("insert into genres values (?,?)", genre_data)
+connection.commit()
+
+#Print genre table
+for row in cursor.execute("select * from genres"):
+    print(row)
+
+#Inner join both tables
+cursor.execute("select music_artists.artist from music_artists inner join genres on music_artists.genre = genres.genre")
+genreSearch = cursor.fetchall()
+for row in genreSearch:
+    print(row)
 connection.close()
